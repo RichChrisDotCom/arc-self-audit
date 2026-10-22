@@ -15,4 +15,4 @@ jobs:
         with:
           python-version: '3.11'
       - name: Run self-test
-        run: python3 arc_audit.py --selftest
+        run: python3 arc_audit/self_test.py
