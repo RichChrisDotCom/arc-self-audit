@@ -1,54 +1,81 @@
 # Arc Audit
 
-Zero-dependency CLI + self-audit of the **Arc Singularity** digital arc concept.
+**Digital Arc Audit** — a deterministic report engine that turns a digital footprint
+into a structured trajectory report, with a matching free 60-second web self-audit.
 
-Run a 60-second self-audit: what your footprint is made of, how often you review it,
-what matters most, and how legible it is right now.
+The **Arc Singularity** digital arc concept is distributed through the GitHub repo
+`arc-self-audit`. This is the paid report engine: you feed it a digital footprint and it
+emits a structured verdict, a per-category `{t, v, r}` section set, and a headline summary.
 
-## Install
+## What's in the repo
 
-No third-party packages required. The script is executable on its own:
+| Artifact | What it is |
+|---|---|
+| `arc_audit/product.py` | Paid $9/mo report engine. Deterministic, stdlib-only, shareable by URL fragment. |
+| `digital-arc-self-audit.html` | Free 60-second web self-audit tool (no backend, shareable by URL fragment). |
+| `index.html` | The public promise page for the Arc Singularity concept. |
+| `brand.md` | The brand concept doc. |
+| `.github/workflows/self-test.yml` | CI workflow. |
+| `.gitignore` | Dotfile ignores. |
+| `README.md` | This doc. |
 
-```sh
-chmod +x arc_audit.py
-./arc_audit.py --footprint assets --cadence quarterly --interest trajectory --legibility partial --focus plan
-```
-
-Or install the console entry point (`arc-audit`) for editable use:
-
-```sh
-pip install -e .
-arc-audit --footprint assets --cadence quarterly --interest trajectory --legibility partial --focus plan
-```
-
-## Usage
-
-```
---footprint    assets|identity|network|data        (what your footprint is made of)
---cadence      never|yearly|quarterly|monthly       (how often you review it)
---interest     legibility|risk|trajectory|network   (what matters most)
---legibility   clear|partial|fog                    (how legible your footprint is)
---focus        list|defend|plan|publish             (the one thing to fix)
-```
-
-Each flag is optional. Feed inputs as flags, `--json`, or on stdin.
+## Free web self-audit
 
 ```sh
-echo '{"footprint":"network","cadence":"never"}' | arc-audit
+# Open in a browser
+https://arc-self-audit.pages.dev/digital-arc-self-audit
 ```
 
-## Output
+No backend, no signup. Six questions, one verdict, one shareable URL fragment.
+Runs entirely in your browser — nothing leaves your machine.
 
-The verdict is the ` · `-joined list of themes (e.g. `data · cadence · risk · fog · defend`),
-plus the single highest-priority "first move".
+## Paid Arc Audit report
 
-## Self-test
+`arc_audit/product.py` is the deterministic report engine. It turns a digital footprint
+into a structured trajectory report. Run from the command line:
 
 ```sh
-python3 arc_audit.py --selftest
+python3 arc_audit/product.py \
+  --footprint assets --cadence quarterly --interest trajectory \
+  --legibility clear --focus plan
 ```
 
-## As a GitHub distribution asset
+Or feed JSON / flags / stdin. Use the report builder directly:
 
-- `arc-self-audit.pages.dev/digital-arc-self-audit` — the static web tool (no backend, shareable by URL fragment).
-- This CLI — a zero-dependency companion for scripting and embedding.
+```python
+from arc_audit.product import build_report
+
+report = build_report(
+    inputs={
+        "footprint": ["data"],
+        "cadence": "quarterly",
+        "interest": "trajectory",
+        "legibility": "clear",
+        "focus": "plan",
+    }
+)
+print(report["verdict"])
+print(report["summary"])
+```
+
+## How it maps to the promise page
+
+| Product surface | Role |
+|---|---|
+| `digital-arc-self-audit.html` | Free 60-second web self-audit (the top-of-funnel capture) |
+| `arc_audit/product.py` | Paid $9/mo report engine (the paid deliverable) |
+| `index.html` | Public promise page on the Arc Singularity concept |
+| `brand.md` | Brand concept and positioning |
+| `.github/workflows/self-test.yml` | CI workflow |
+| `.gitignore` | Dotfile ignores |
+
+## Method (transparent)
+
+Every Arc Audit report is deterministic and reproducible. The report is a `{t, v, r}` section
+set over five inputs: footprint, cadence, interest, legibility, focus. The verdict is the
+`·`-joined list of themes, plus a single highest-priority first move. All output is deterministic
+and reproducible — same input, same report, every time.
+
+## License
+
+MIT — see `LICENSE`.
