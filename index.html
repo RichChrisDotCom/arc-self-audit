@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arc Singularity — Your digital arc, owned.</title>
+<meta name="description" content="One briefing a month on where your digital identity, AI, and markets are heading — plus a quarterly review that turns a scattered footprint into a clear trajectory.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛶</text></svg>">
+<style>
+  :root{
+    --bg:#0e0e12; --panel:#15151c; --ink:#e8e6ef; --muted:#9b97a8; --line:#2a2733; --gold:#f0c674;
+    --accent:#7fd8a0; --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6}
+  a{color:var(--accent)}
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px}
+  header.top{padding:40px 0 8px}
+  header.top .logo{font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  h1{font-weight:700;line-height:1.2;margin:8px 0 10px}
+  h1 .dot{color:var(--gold)}
+  .sub{color:var(--muted);font-size:1.05rem}
+  .paywrap{margin:22px 0 10px}
+  .paywrap .price{font-size:1.5rem;font-weight:700}
+  .paywrap .note{color:var(--muted);font-size:.85rem}
+  form.capture{margin:22px 0;padding:16px;background:var(--panel);border:1px solid var(--line)}
+  form.capture input{flex:1;margin-right:8px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:#0b0b10;color:var(--ink);font-size:1rem}
+  form.capture button{background:var(--accent);color:#05200f;border:none;padding:12px 18px;border-radius:8px;cursor:pointer;font-weight:700;font-size:1rem}
+  .card{border:1px solid var(--line);border-radius:10px;padding:18px;background:var(--panel)}
+  .card h2{font-size:1.05rem;margin:0 0 8px}
+  .card ul{margin:0;padding-left:18px}
+  .card li+p{list-style-type:disc}
+  .empty{color:var(--muted);font-style:italic;margin-top:24px;border-top:1px solid var(--line);padding-top:18px}
+  footer{margin-top:40px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:.85rem}
+  @media (max-width:520px){h1{font-size:1.4rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="logo">Arc Singularity</div>
+    <h1>Your digital arc, <span class="dot">owned.</span></h1>
+    <p class="sub">One briefing a month on where digital identity, AI, and markets are heading — plus a quarterly review that turns a scattered footprint into a clear trajectory.</p>
+    <div class="card" style="border-color:var(--gold);background:#1a1810;">
+      <div style="font-size:1.05rem;font-weight:700;color:var(--gold);margin-bottom:6px;">Self-audit · 60 seconds</div>
+      <p style="margin:0 0 10px;color:var(--muted);font-size:.92rem;">See where your digital arc is actually heading — before the audit product. Runs entirely in your browser, nothing uploaded.</p>
+      <a href="https://arc-self-audit.pages.dev/digital-arc-self-audit" style="color:#7aa2f7;font-weight:700;">Try the 60-second self-audit&nbsp;&nbsp;→</a>
+    </div>
+  </header>
+
+  <div class="paywrap">
+    <div class="price">Arc Audit — $9 / mo</div>
+    <div class="note">Quarterly personal review of your digital footprint. Test-mode checkout. (Live flip: your call.)</div>
+    <a class="price" href="https://buy.stripe.com/test_14A6oBc0N49W55yfqCfYY07" target="_blank" rel="noopener">Buy now&nbsp;&nbsp;→</a>
+  </div>
+
+  <div class="card">
+    <h2>How it works</h2>
+    <ul>
+      <li><strong>Monthly briefing</strong> — a short, cited read on the forces reshaping your digital life (identity, AI, markets, sovereignty). Free.</li>
+      <li><strong>Arc Audit</strong> — every quarter, a structured review of your digital footprint: what you own, what's at risk, and which direction you're drifting. Delivered as a written trajectory report.</li>
+      <li><strong>Open protocol</strong> — your arc is a public manifesto + private report. You decide what's shared.</li>
+    </ul>
+  </div>
+
+  <form class="capture" action="https://buy.stripe.com/test_14A6oBc0N49W55yfqCfYY07" method="POST">
+    <input name="email" type="email" placeholder="Your email — first briefing is free" required>
+    <button type="submit">Send me the first briefing — free</button>
+  </form>
+
+  <div class="empty">
+    Pre-launch. The roster is empty — this promise has no audience yet, and no money has moved.
+    The first briefing and the first Arc Audit go out to the first hundred subscribers.
+    Everything published here is real except the waitlist.
+  </div>
+</div>
+
+<footer>
+  Founded by the Arc community. Built by humans and machines.<br>
+  Arc Singularity is a concept, not a company — no account, no data collection, no subscription until you choose to pay.
+</footer>
+</body>
+</html>

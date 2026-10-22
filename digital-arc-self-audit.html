@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digital Arc Self-Audit — your footprint in 60 seconds.</title>
+<meta name="description" content="A 60-second self-audit of your digital footprint — how it's drifting, what's at risk, and your first move. Free, no signup, client-side.">
+<style>
+  :root{
+    --bg:#0b0b10; --panel:#15151c; --ink:#e8e6ef; --muted:#9b97a8; --line:#2a2733;
+    --gold:#f0c674; --accent:#7aa2f7;
+    --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6}
+  a{color:var(--accent)}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.top{padding:44px 0 8px}
+  header.top .logo{font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  h1{font-weight:700;line-height:1.2;margin:8px 0 10px}
+  .sub{color:var(--muted);font-size:1.02rem}
+  .grid{display:grid;gap:14px}
+  .card{border:1px solid var(--line);border-radius:10px;padding:18px;background:var(--panel)}
+  .card h2{font-size:1rem;margin:0 0 10px}
+  .question label{font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .options{display:flex;flex-wrap:wrap;gap:8px}
+  .options input{type:radio;clip:rect(0 0 0 0);clip-path:inset(50%);position:absolute}
+  .options span{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border:1px solid var(--line);border-radius:8px;background:#0b0b10;color:var(--ink);font-size:.92rem;cursor:pointer;min-width:0}
+  .options span:has(input:checked){border-color:var(--accent);background:#1a1a28}
+  .options span:hover:not(:has(input:checked)){border-color:var(--gold)}
+  .submit{margin-top:18px;background:var(--accent);color:#05200f;border:none;padding:13px 18px;border-radius:8px;cursor:pointer;font-weight:700;font-size:1rem;width:100%}
+  .result{order:-1;animation:fade .4s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .verdict{font-size:1.08rem;line-height:1.6}
+  .recommend{display:block;margin-top:10px;font-size:.9rem;color:var(--gold);font-style:italic}
+  .share{margin-top:14px;display:inline-block;background:var(--panel);border:1px solid var(--line);padding:10px 12px;border-radius:8px;font-size:.82rem;color:var(--muted)}
+  .share code{display:inline-block;word-break:break-all;color:var(--ink)}
+  footer{margin-top:36px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:.82rem}
+  @media (max-width:520px){.options span{padding:8px 10px;font-size:.86rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="logo">Arc Singularity</div>
+    <h1>Your digital footprint, in 60 seconds.</h1>
+    <p class="sub">Six questions. A personalized read on how your arc is drifting, what's at risk, and your first move. Free, no signup, runs entirely in your browser.</p>
+  </header>
+
+  <div class="grid">
+    <div class="card">
+      <h2>1 · What is your footprint mostly made of?</h2>
+      <div class="options" data-q="footprint">
+        <input id="q1a" name="q1" value="assets"><span for="q1a">I own things that should be listed somewhere</span>
+        <input id="q1b" name="q1" value="identity"><span for="q1b">My name online is a floating signal, no single source owns it</span>
+        <input id="q1c" name="q1" value="network"><span for="q1c">My reputation is spread across the people who cite or mirror me</span>
+        <input id="q1d" name="q1" value="data"><span for="q1d">The cost is hiding in subscriptions and data I forgot about</span>
+      </div>
+    </div>
+    <div class="card">
+      <label>2 · How often do you audit what you own online?</label>
+      <div class="options" data-q="cadence">
+        <input id="q2a" name="q2" value="never"><span for="q2a">Never</span>
+        <input id="q2b" name="q2" value="yearly"><span for="q2b">Once a year</span>
+        <input id="q2c" name="q2" value="quarterly"><span for="q2c">Once a quarter</span>
+        <input id="q2d" name="q2" value="monthly"><span for="q2d">Once a month</span>
+      </div>
+    </div>
+    <div class="card">
+      <label>3 · What matters most to you?</label>
+      <div class="options" data-q="interest">
+        <input id="q3a" name="q3" value="legibility"><span for="q3a">Knowing exactly what I own &amp; where it lives</span>
+        <input id="q3b" name="q3" value="risk"><span for="q3b">Protecting it from drift and loss</span>
+        <input id="q3c" name="q3" value="trajectory"><span for="q3c">Planning where it's headed in 3–5 years</span>
+        <input id="q3d" name="q3" value="network"><span for="q3d">Building the network that carries my reputation</span>
+      </div>
+    </div>
+    <div class="card">
+      <label>4 · How legible is your footprint right now?</label>
+      <div class="options" data-q="legibility">
+        <input id="q4a" name="q4" value="clear"><span for="q4a">I have a clear map</span>
+        <input id="q4b" name="q4" value="partial"><span for="q4b">Partially clear, gaps everywhere</span>
+        <input id="q4c" name="q4" value="fog"><span for="q4c">I don't even know what I own</span>
+      </div>
+    </div>
+    <div class="card">
+      <label>5 · The one thing to fix, in one phrase? (optional)</label>
+      <div class="options" data-q="focus">
+        <input id="q5a" name="q5" value="list"><span for="q5a">Turn it into a single list of everything I own</span>
+        <input id="q5b" name="q5" value="defend"><span for="q5b">Stop the slow bleed of subscriptions &amp; data</span>
+        <input id="q5c" name="q5" value="plan"><span for="q5c">A 3–5 year trajectory plan</span>
+        <input id="q5d" name="q5" value="publish"><span for="q5d">A place where my reputation lives, on purpose</span>
+      </div>
+    </div>
+    <button class="submit" id="submit" type="button">Run my audit</button>
+  </div>
+
+  <section class="result" id="result" aria-live="polite"></section>
+
+  <footer>
+    Arc Singularity · a concept by humans and machines. This runs 100% client-side — no data ever leaves your browser.
+  </footer>
+</div>
+
+<script src="audit-logic.js"></script>
+<script>
+(function () {
+  "use strict";
+  const audit = auditLib.audit;
+
+  const q = function (name) {
+    const el = document.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : null;
+  };
+
+  const submit = document.getElementById("submit");
+  const result = document.getElementById("result");
+  submit.addEventListener("click", function () {
+    const inputs = { footprint: q("q1"), cadence: q("q2"), interest: q("q3"), legibility: q("q4"), focus: q("q5") };
+    const out = audit(inputs);
+    const read = Object.values(inputs).filter(Boolean).join("/");
+    const share = location.pathname + "#" + read;
+    let html = '<div class="verdict">' + escapeHtml(out.verdict) + '</div>';
+    html += '<div class="recommend">First move: ' + escapeHtml(out.recommend) + '</div>';
+    html += '<div class="share">Share your read: <code>' + escapeHtml(share) + '</code></div>';
+    result.innerHTML = html;
+  });
+
+  const escapeHtml = function (s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  };
+
+  // Prefill from URL fragment so shares carry the audit state
+  const frag = location.hash.slice(1).split("/").filter(Boolean);
+  if (frag.length === 4 || frag.length === 5) {
+    const [footprint, cadence, legibility, focus] = frag;
+    for (const [name, val] of [["q1", footprint], ["q2", cadence], ["q4", legibility], ["q5", focus]]) {
+      const el = document.querySelector('input[name="' + name + '"][value="' + val + '"]');
+      if (el) el.checked = true;
+    }
+  }
+})();
+</script>
+</body>
+</html>
